@@ -108,6 +108,7 @@ type AppRequest struct {
 	// coreos update engine extensions
 	AlephVersion string `xml:"alephversion,attr,omitempty"`
 	BootID       string `xml:"bootid,attr,omitempty"`
+	MachineAlias string `xml:"machinealias,attr,omitempty"`
 	MachineID    string `xml:"machineid,attr,omitempty"`
 	OEM          string `xml:"oem,attr,omitempty"`
 	OEMVersion   string `xml:"oemversion,attr,omitempty"`
