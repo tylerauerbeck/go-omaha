@@ -13,7 +13,7 @@ endif
 all: bin/serve-package
 
 bin/serve-package:
-	$(Q)go build -o $@ cmd/serve-package/main.go
+	$(Q)go build -mod=vendor -o $@ cmd/serve-package/main.go
 
 .PHONY: clean
 clean:
@@ -21,5 +21,8 @@ clean:
 
 .PHONY: vendor
 vendor:
-	$(Q)glide update --strip-vendor
-	$(Q)glide-vc --use-lock-file --no-tests --only-code
+	$(Q)go mod vendor
+
+.PHONY: test
+test:
+	$(Q)go test -mod=vendor ./...
