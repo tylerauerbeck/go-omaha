@@ -1,0 +1,10 @@
+# github.com/blang/semver v3.5.1+incompatible
+## explicit
+github.com/blang/semver
+# github.com/kylelemons/godebug v1.1.0
+## explicit
+github.com/kylelemons/godebug/diff
+github.com/kylelemons/godebug/pretty
+# github.com/satori/go.uuid v1.1.0
+## explicit
+github.com/satori/go.uuid
