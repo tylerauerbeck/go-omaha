@@ -1,8 +1,0 @@
-language: go
-sudo: false
-go:
- - 1.7.5
- - 1.8.1
-
-script:
- - go test -v ./...
