@@ -1,6 +1,6 @@
 # Go Omaha
 
-[![Build Status](https://travis-ci.org/coreos/go-omaha.svg?branch=master)](https://travis-ci.org/coreos/go-omaha)
+![Go](https://github.com/kinvolk/go-omaha/workflows/Go/badge.svg)
 [![GoDoc](https://godoc.org/github.com/coreos/go-omaha/omaha?status.svg)](https://godoc.org/github.com/coreos/go-omaha/omaha)
 
 Implementation of the [omaha update protocol](https://github.com/google/omaha) in Go.
