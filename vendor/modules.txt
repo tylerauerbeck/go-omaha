@@ -5,6 +5,8 @@ github.com/blang/semver
 ## explicit
 github.com/kylelemons/godebug/diff
 github.com/kylelemons/godebug/pretty
-# github.com/satori/go.uuid v1.1.0
+# github.com/satori/go.uuid v1.2.0
 ## explicit
 github.com/satori/go.uuid
+# gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c
+## explicit

@@ -21,9 +21,9 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/satori/go.uuid"
+	uuid "github.com/satori/go.uuid"
 
-	"github.com/coreos/go-omaha/omaha"
+	"github.com/kinvolk/go-omaha/omaha"
 )
 
 const (
