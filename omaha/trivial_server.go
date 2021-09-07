@@ -19,7 +19,7 @@ import (
 	"net/http"
 	"path"
 
-	"github.com/blang/semver"
+	"github.com/blang/semver/v4"
 )
 
 const pkg_prefix = "/packages/"

@@ -21,7 +21,7 @@ import (
 	"net/url"
 	"time"
 
-	uuid "github.com/satori/go.uuid"
+	uuid "github.com/google/uuid"
 
 	"github.com/kinvolk/go-omaha/omaha"
 )
@@ -67,7 +67,7 @@ func New(serverURL, userID string) (*Client, error) {
 		apiClient:     newHTTPClient(),
 		clientVersion: defaultClientVersion,
 		userID:        userID,
-		sessionID:     uuid.NewV4().String(),
+		sessionID:     uuid.New().String(),
 		apps:          make(map[string]*AppClient),
 	}
 
