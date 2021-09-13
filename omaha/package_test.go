@@ -18,7 +18,10 @@ import (
 	"strings"
 	"testing"
 
+	"encoding/xml"
+
 	"github.com/kylelemons/godebug/pretty"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestPackageFromPath(t *testing.T) {
@@ -141,4 +144,28 @@ func TestPackageVerifyBadSHA256(t *testing.T) {
 	if err != PackageHashMismatchError {
 		t.Error(err)
 	}
+}
+
+func TestPackageWithMetadata(t *testing.T) {
+	jsonContent := "{url: 'http://example.com'}"
+	p := Package{
+		Name:     "null",
+		SHA1:     "2jmj7l5rSw0yVb/vlWAYkK/YBwk=",
+		SHA256:   "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=",
+		Size:     0,
+		Required: false,
+		Metadata: &Metadata{
+			ContentType: "content/json",
+			Content:     jsonContent,
+		},
+	}
+
+	assert.Equal(t, jsonContent, p.Metadata.Content)
+
+	xmlPkg := []byte("<Package name=\"\" hash=\"\" hash_sha256=\"\" size=\"\" required=\"false\"><metadata content-type=\"content/json\"><![CDATA[" + jsonContent + "]]></metadata></Package>")
+
+	var newPkg Package
+	err := xml.Unmarshal(xmlPkg, &newPkg)
+	assert.NoError(t, err)
+	assert.Equal(t, p.Metadata.Content, newPkg.Metadata.Content)
 }

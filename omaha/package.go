@@ -31,11 +31,12 @@ var (
 
 // Package represents a single downloadable file.
 type Package struct {
-	Name     string `xml:"name,attr"`
-	SHA1     string `xml:"hash,attr"`
-	SHA256   string `xml:"hash_sha256,attr,omitempty"`
-	Size     uint64 `xml:"size,attr"`
-	Required bool   `xml:"required,attr"`
+	Name     string    `xml:"name,attr"`
+	SHA1     string    `xml:"hash,attr"`
+	SHA256   string    `xml:"hash_sha256,attr,omitempty"`
+	Size     uint64    `xml:"size,attr"`
+	Required bool      `xml:"required,attr"`
+	Metadata *Metadata `xml:"metadata,omitempty"`
 }
 
 func (p *Package) FromPath(name string) error {
@@ -108,4 +109,18 @@ func multihash(r io.Reader) (sha1b64, sha256b64 string, n int64, err error) {
 	sha1b64 = base64.StdEncoding.EncodeToString(h1.Sum(nil))
 	sha256b64 = base64.StdEncoding.EncodeToString(h256.Sum(nil))
 	return
+}
+
+func (p *Package) AddMetadata(content string, contentType string) *Metadata {
+	mtd := &Metadata{
+		ContentType: contentType,
+		Content:     content,
+	}
+	p.Metadata = mtd
+	return mtd
+}
+
+type Metadata struct {
+	ContentType string `xml:"content-type,attr,omitempty"`
+	Content     string `xml:",cdata"`
 }
