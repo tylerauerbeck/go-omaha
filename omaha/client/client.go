@@ -136,6 +136,10 @@ func (c *Client) NewAppClient(appID, appVersion string) (*AppClient, error) {
 	}
 	c.apps[appID] = ac
 
+	if err := ac.SetVersion(appVersion); err != nil {
+		return nil, err
+	}
+
 	return ac, nil
 }
 
@@ -148,7 +152,7 @@ func NewAppClient(serverURL, userID, appID, appVersion string) (*AppClient, erro
 	}
 
 	ac, err := c.NewAppClient(appID, appVersion)
-	if err := ac.SetVersion(appVersion); err != nil {
+	if err != nil {
 		return nil, err
 	}
 
