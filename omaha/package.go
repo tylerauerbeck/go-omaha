@@ -32,7 +32,7 @@ var (
 // Package represents a single downloadable file.
 type Package struct {
 	Name     string    `xml:"name,attr"`
-	SHA1     string    `xml:"hash,attr"`
+	SHA1     string    `xml:"hash,attr,omitempty"`
 	SHA256   string    `xml:"hash_sha256,attr,omitempty"`
 	Size     uint64    `xml:"size,attr"`
 	Required bool      `xml:"required,attr"`
